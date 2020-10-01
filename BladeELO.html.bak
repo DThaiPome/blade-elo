@@ -8,8 +8,8 @@
   <body>
     <h1 id="Title">Automatic ELO Ranking</h1>
     <h2> Beyblade ELO Rankings: </h2>
-    <table id="rankings" name="rankings_table">
-      <tbody>
+    <table id="rankings">
+      <tbody id="rankings-body">
         <tr id="labels">
           <th class="RipperID">Ripper ID</th>
           <th class="Identity">Identity</th>
