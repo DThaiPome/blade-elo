@@ -31,6 +31,18 @@ function clear_players() {
     render_table();
 }
 
+function copy_json() {
+    var json = JSON.stringify(leaderboard);
+    navigator.clipboard.writeText(json);
+    alert("Copied JSON to clipboard");
+}
+
+function import_json() {
+    var json = document.new_player_info.json_input.value;
+    leaderboard = JSON.parse(json);
+    render_table();
+}
+
 function render_table() {
     clear_table(get_table_id());
     add_rows_from_leaderboard(get_table_id());

@@ -22,8 +22,14 @@
       <form name="new_player_info"> Enter player information: <br>
         Name: <input name="player_name" type="text"> <br>
         Ripper ID: <input name="player_ripper_id" type="text"> <br>
-        <input value="Add" onclick="add_player()" type="button">
-        <input value="Clear" onclick="clear_players()" type="button"> </form>
+        <input value="Add" onclick="add_player()" type="button"> <input value="Clear"
+
+onclick="clear_players()" type="button"> <br>
+        <input value="Copy JSON to clipboard" onclick="copy_json()" type="button">
+        <br>
+        Import JSON: <input name="json_input" type="text"> <input
+
+value="Import" onclick="import_json()" type="button"></form>
     </div>
   </body>
 </html>
