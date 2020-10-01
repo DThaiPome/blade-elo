@@ -10,21 +10,11 @@
     <h1 class="Title">Automatic ELO Ranking</h1>
     <h2 class="Title"> Beyblade ELO Rankings: </h2>
     <table id="rankings">
-      <tbody name="rankings_table">
+      <tbody>
         <tr id="labels">
           <th class="RipperID">Ripper ID</th>
           <th class="Identity">Identity</th>
           <th class="ELO">ELO</th>
-        </tr>
-        <tr id="player1">
-          <th class="RipperID">Pyra ReIncarna</th>
-          <th class="Identity">Lilly G.</th>
-          <th class="ELO">1190</th>
-        </tr>
-        <tr id="player2">
-          <th class="RipperID">Boppin Blitz</th>
-          <th class="Identity">Colin Y.</th>
-          <th class="ELO">1126</th>
         </tr>
       </tbody>
     </table>
@@ -32,7 +22,8 @@
       <form name="new_player_info"> Enter player information: <br>
         Name: <input name="player_name" type="text"> <br>
         Ripper ID: <input name="player_ripper_id" type="text"> <br>
-        <input value="Add" onclick="add_player()" type="button"> </form>
+        <input value="Add" onclick="add_player()" type="button"> <br>
+        <input value="Clear" onclick="clear_players()" type="button"> </form>
     </div>
   </body>
 </html>
