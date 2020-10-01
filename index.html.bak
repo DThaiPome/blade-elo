@@ -12,9 +12,9 @@
     <div> <form name="new_player_info">
       	Enter player information:
       <br>
-      <input type="text" name="player_name">
+      Name: <input type="text" name="player_name">
       <br>
-      <input type="text" name="player_ripper_id">
+      Ripper ID: <input type="text" name="player_ripper_id">
       <br>
       <input type="button" value="Add" onclick="add_player()">
       </form> </div>
