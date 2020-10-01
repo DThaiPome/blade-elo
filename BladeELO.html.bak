@@ -7,6 +7,7 @@
   <body>
     <h1 id="Title">Automatic ELO Ranking</h1>
     <h2> Beyblade ELO Rankings: </h2>
+    <h3> testing git </h3>
     <table id="rankings">
       <tbody>
         <tr id="labels">
@@ -26,6 +27,5 @@
         </tr>
       </tbody>
     </table>
-    
   </body>
 </html>
