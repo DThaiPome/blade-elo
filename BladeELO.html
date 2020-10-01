@@ -3,12 +3,13 @@
   <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <title>BladeELO</title>
+    <script src="resources/scripts/leaderboard.js"></script>
   </head>
   <body>
     <h1 id="Title">Automatic ELO Ranking</h1>
     <h2> Beyblade ELO Rankings: </h2>
-    <table id="rankings" name="rankings_table">
-      <tbody>
+    <table id="rankings">
+      <tbody name="rankings_table">
         <tr id="labels">
           <th class="RipperID">Ripper ID</th>
           <th class="Identity">Identity</th>
@@ -26,5 +27,12 @@
         </tr>
       </tbody>
     </table>
+    <div>
+      <form name="new_player_info"> Enter player information: <br>
+        Name: <input name="player_name" type="text"> <br>
+        Ripper ID: <input name="player_ripper_id" type="text"> <br>
+        <input value="Add" onclick="add_player()" type="button"> </form>
+    </div>
+    
   </body>
 </html>
