@@ -4,6 +4,7 @@
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <title>BladeELO</title>
     <script src="resources/scripts/leaderboard.js"></script>
+    <link rel="stylesheet" href="styles.css">
   </head>
   <body>
     <h1 id="Title">Automatic ELO Ranking</h1>
@@ -24,6 +25,5 @@
         <input value="Add" onclick="add_player()" type="button">
         <input value="Clear" onclick="clear_players()" type="button"> </form>
     </div>
-    
   </body>
 </html>
