@@ -1,3 +1,5 @@
+//Just a holder for everything related to the player
+//Probably could be a struct but meh
 class Player {
     constructor(name, ripper_id, elo) {
         this.name = name;
@@ -6,12 +8,26 @@ class Player {
     }
 }
 
+//This is where each "row" of the table is stored
+//All methods work on this array, then the contents
+//of this array are rendered with HTML
 var leaderboard = [];
 
+//There is probably a better place to store this
+//string but alas
 function get_table_id() {
     return "rankings";
 }
 
+//Adds a player to the leaderboard array using the data in the two
+//input fields, then redraws the leaderboard
+
+/*
+TODO:
+    * Error checking -- needs a length cap, and banned characters (?)
+                        also shouldn't be able to submit with empty fields
+    * Clear the input fields afterwards
+*/
 function add_player() {
     var rankings_table = document.getElementById(get_table_id());
 
@@ -26,28 +42,41 @@ function add_player() {
     render_table();
 }
 
+//Clears the leaderboard array and redraws the leaderboard
 function clear_players() {
     leaderboard = [];
     render_table();
 }
 
+//Converts the contents of the leaderboard array to JSON, then
+//copies it to the clipboard
 function copy_json() {
     var json = JSON.stringify(leaderboard);
     navigator.clipboard.writeText(json);
     alert("Copied JSON to clipboard");
 }
 
+//Parses the JSON in the import field as a leaderboard array, and
+//redraws the leaderboard with this data
+
+/*
+TODO:
+    * Error checking  --  don't load if it's not proper JSON
+    * Clear the input field afterwards
+*/
 function import_json() {
     var json = document.new_player_info.json_input.value;
     leaderboard = JSON.parse(json);
     render_table();
 }
 
+//Redraws the leaderboard using what is stored in the leaderboard array
 function render_table() {
     clear_table(get_table_id());
     add_rows_from_leaderboard(get_table_id());
 }
 
+//Clears the leaderboard (NOT the array)
 function clear_table(tableID) {
     var rankings_table = document.getElementById(tableID);
 
@@ -56,6 +85,7 @@ function clear_table(tableID) {
     }
 }
 
+//Adds each row from the leaderboard array to the leaderboard
 function add_rows_from_leaderboard(tableID) {
     var rankings_table = document.getElementById(tableID);
     leaderboard.forEach( (item, index) => {
