@@ -9,21 +9,11 @@
     <h1 id="Title">Automatic ELO Ranking</h1>
     <h2> Beyblade ELO Rankings: </h2>
     <table id="rankings">
-      <tbody id="rankings-body">
+      <tbody>
         <tr id="labels">
           <th class="RipperID">Ripper ID</th>
           <th class="Identity">Identity</th>
           <th class="ELO">ELO</th>
-        </tr>
-        <tr id="player1">
-          <th class="RipperID">Pyra ReIncarna</th>
-          <th class="Identity">Lilly G.</th>
-          <th class="ELO">1190</th>
-        </tr>
-        <tr id="player2">
-          <th class="RipperID">Boppin Blitz</th>
-          <th class="Identity">Colin Y.</th>
-          <th class="ELO">1126</th>
         </tr>
       </tbody>
     </table>
