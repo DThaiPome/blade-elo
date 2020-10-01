@@ -1,3 +1,13 @@
+class Player {
+    constructor(name, ripper_id, elo) {
+        this.name = name;
+        this.ripper_id = ripper_id
+        this.elo = elo;
+    }
+}
+
+var leaderboard = [];
+
 function add_player() {
     var rankings_table = document.getElementById("rankings");
 
@@ -17,7 +27,14 @@ function add_player() {
     var eloCol = newRow.insertCell(2);
     eloCol.class = "ELO";
 
+    var initialElo = 1000;
+
     nameCol.innerHTML = name;
     idCol.innerHTML = id;
-    eloCol.innerHTML = 1000;
+    eloCol.innerHTML = initialElo;
+
+    var newPlayer = new Player(name, id, initialElo);
+    leaderboard.push(newPlayer);
+
+    console.log(JSON.stringify(leaderboard));
 }
