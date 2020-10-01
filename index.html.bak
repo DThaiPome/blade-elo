@@ -3,7 +3,7 @@
   <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <title>BladeELO - Easy Leaderboard Tool</title>
-    <script src="/resources/scripts/test.js"></script>
+    <script src="resources/scripts/test.js"></script>
   </head>
   <body>
     <p>Just a test<br>
