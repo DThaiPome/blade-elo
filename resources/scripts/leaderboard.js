@@ -4,9 +4,10 @@ var ELO_FACTOR = 100; //how many points to next elo
 
 function GLOBALS(){
     function constructor(){
-        this.MIN_ELO = MIN_ELO; 
-        this.MAX_ELO = MAX_ELO;
-        this.ELO_FACTOR = ELO_FACTOR;
+        this.min = MIN_ELO; 
+        this.max = MAX_ELO;
+        this.factor = ELO_FACTOR;
+        this.lb = leaderboard;
     }
     return constructor;
 }
@@ -53,7 +54,7 @@ function clear_players() {
 //Converts the contents of the leaderboard array to JSON, then
 //copies it to the clipboard
 function copy_json() {
-    var json = JSON.stringify(leaderboard);
+    var json = JSON.stringify(GLOBALS());
     navigator.clipboard.writeText(json);
     alert("Copied JSON to clipboard");
 }
@@ -70,7 +71,11 @@ TODO:
 function import_json() {
     var json = document.new_player_info.json_input.value;
     try {
-            leaderboard = JSON.parse(json);
+            var global = JSON.parse(json);
+            MIN_ELO = global.min;
+            MAX_ELO = global.max;
+            ELO_FACTOR = global.factor;
+            leaderboard = global.lb;
             render_table();
     } catch (e){
         alert( "Improper JSON provided.");
@@ -116,44 +121,17 @@ function add_rows_from_leaderboard(tableID) {
 function Win_adjust_elo(winner,loser){
     winElo = winner.getElo();
     loseElo = loser.getElo();
-    var k = scaleK(winElo);
+    var kwin = scaleK(winElo);
+    var klose = scaleK(loseElo);
 
     var expected = 1 / (1 + Math.pow(10, ((loseElo - winElo)/400)));
-    var win_adjustedElo = Math.max(winElo + Math.ceil(k * (1 - expected)), 800);
-    var loser_adjustedElo = Math.max(loseElo +_Math.cel(k* ( 1 - (1-expected),800)));
+    var win_adjustedElo = Math.min(Math.max(winElo + Math.ceil(kwin * (1 - expected)), MIN_ELO),MAX_ELO);
+    var loser_adjustedElo = Math.min(Math.max(loseElo +_Math.ceil(klose* (0 - (1-expected),MIN_ELO))),MAX_ELO);
     winner.setElo(win_adjustedElo);
     loser.setElo(loser_adjustedElo);
 }
 
-
 function scaleK(elo) {
-    if(within(elo, 800, 899))
-      return 64;
-    if(within(elo, 900, 999))
-      return 59;
-    if(within(elo, 1000, 1099))
-      return 54;
-    if(within(elo, 1100, 1199))
-      return 49;
-    if(within(elo, 1200, 1299))
-      return 45;
-    if(within(elo, 1300, 1399))
-      return 41;
-    if(within(elo, 1400, 1499))
-      return 37;
-    if(within(elo, 1500, 1599))
-      return 34;
-    if(within(elo, 1600, 1699))
-      return 31;
-    if(within(elo, 1700, 1799))
-      return 28;
-    if(within(elo, 1800, 1899))
-      return 25;
-    if(within(elo, 1900, 1999))
-      return 23;
-    if(elo >= 2000)
-      return 20;
-    
-    return 0;
+    return Math.floor((1/100000)*(elo*elo)-.66*elo + 100);
   }
   
