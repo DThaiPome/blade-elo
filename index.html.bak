@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>BladeELO</title>
+    <script src="resources/scripts/leaderboard.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+
+      crossorigin="anonymous">
+  </head>
+  <body>
+    <h1 class="Title">Automatic ELO Ranking</h1>
+    <h2 class="Title"> Beyblade ELO Rankings: </h2>
+    <table id="rankings">
+      <tbody>
+        <tr id="labels">
+          <th class="RipperID">Ripper ID</th>
+          <th class="Identity">Identity</th>
+          <th class="ELO">ELO</th>
+        </tr>
+      </tbody>
+    </table>
+    <div>
+      <form name="new_player_info"> Enter player information: <br>
+        Name: <input name="player_name" type="text"> <br>
+        Ripper ID: <input name="player_ripper_id" type="text"> <br>
+        <input value="Add" onclick="add_player()" type="button"> <input value="Clear"
+
+onclick="clear_players()" type="button"> <br>
+        <input value="Copy JSON to clipboard" onclick="copy_json()" type="button">
+        <br>
+        Import JSON: <input name="json_input" type="text"> <input
+
+value="Import" onclick="import_json()" type="button"></form>
+    </div>
+    
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+  </body>
+</html>
