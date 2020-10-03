@@ -1,16 +1,20 @@
-//Just a holder for everything related to the player
-//Probably could be a struct but meh
-class Player {
-    constructor(name, ripper_id, elo) {
-        this.name = name;
-        this.ripper_id = ripper_id
-        this.elo = elo;
-    }
-}
+var MIN_ELO = 800;
+var MAX_ELO = 2000;
+var ELO_FACTOR = 100; //how many points to next elo
 
+function GLOBALS(){
+    function constructor(){
+        this.MIN_ELO = MIN_ELO; 
+        this.MAX_ELO = MAX_ELO;
+        this.ELO_FACTOR = ELO_FACTOR;
+    }
+    return constructor;
+}
 //This is where each "row" of the table is stored
 //All methods work on this array, then the contents
 //of this array are rendered with HTML
+
+//table is a list of players
 var leaderboard = [];
 
 //There is probably a better place to store this
@@ -34,9 +38,7 @@ function add_player() {
     var name = document.new_player_info.player_name.value;
     var id = document.new_player_info.player_ripper_id.value;
 
-    var initialElo = 1000;
-
-    var newPlayer = new Player(name, id, 1000);
+    var newPlayer = new Player(name, id);
     leaderboard.push(newPlayer);
 
     render_table();
@@ -64,10 +66,15 @@ TODO:
     * Error checking  --  don't load if it's not proper JSON
     * Clear the input field afterwards
 */
+//imports the json with the given data, provided we are given a proper json
 function import_json() {
     var json = document.new_player_info.json_input.value;
-    leaderboard = JSON.parse(json);
-    render_table();
+    try {
+            leaderboard = JSON.parse(json);
+            render_table();
+    } catch (e){
+        alert( "Improper JSON provided.");
+    }
 }
 
 //Redraws the leaderboard using what is stored in the leaderboard array
@@ -106,3 +113,47 @@ function add_rows_from_leaderboard(tableID) {
         eloCol.innerHTML = item.elo;
     })
 }
+function Win_adjust_elo(winner,loser){
+    winElo = winner.getElo();
+    loseElo = loser.getElo();
+    var k = scaleK(winElo);
+
+    var expected = 1 / (1 + Math.pow(10, ((loseElo - winElo)/400)));
+    var win_adjustedElo = Math.max(winElo + Math.ceil(k * (1 - expected)), 800);
+    var loser_adjustedElo = Math.max(loseElo +_Math.cel(k* ( 1 - (1-expected),800)));
+    winner.setElo(win_adjustedElo);
+    loser.setElo(loser_adjustedElo);
+}
+
+
+function scaleK(elo) {
+    if(within(elo, 800, 899))
+      return 64;
+    if(within(elo, 900, 999))
+      return 59;
+    if(within(elo, 1000, 1099))
+      return 54;
+    if(within(elo, 1100, 1199))
+      return 49;
+    if(within(elo, 1200, 1299))
+      return 45;
+    if(within(elo, 1300, 1399))
+      return 41;
+    if(within(elo, 1400, 1499))
+      return 37;
+    if(within(elo, 1500, 1599))
+      return 34;
+    if(within(elo, 1600, 1699))
+      return 31;
+    if(within(elo, 1700, 1799))
+      return 28;
+    if(within(elo, 1800, 1899))
+      return 25;
+    if(within(elo, 1900, 1999))
+      return 23;
+    if(elo >= 2000)
+      return 20;
+    
+    return 0;
+  }
+  
