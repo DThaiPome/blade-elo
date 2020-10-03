@@ -37,7 +37,9 @@ function add_player() {
     var rankings_table = document.getElementById(get_table_id());
 
     var name = document.new_player_info.player_name.value;
+    document.new_player_info.player_name.value = "";
     var id = document.new_player_info.player_ripper_id.value;
+    document.new_player_info.player_ripper_id.value = "";
 
     var newPlayer = new Player(name, id);
     leaderboard.push(newPlayer);
@@ -80,6 +82,7 @@ function import_json() {
     } catch (e){
         alert( "Improper JSON provided.");
     }
+    document.new_player_info.json_input.value = "";
 }
 
 //Redraws the leaderboard using what is stored in the leaderboard array
