@@ -69,6 +69,7 @@ function add_player() {
     
     if (newPlayer.name != "" && newPlayer.ripper_id != "") {
         leaderboard.push(newPlayer);
+        save_json_to_cookie();
     }
 
     clear_add_player_fields();
@@ -92,8 +93,13 @@ function clear_add_player_fields() {
 function copy_json() {
     var json = JSON.stringify(GLOBALS());
     navigator.clipboard.writeText(json);
-    document.cookie = "json=" + json;
+    save_json_to_cookie();
     alert("Copied JSON to clipboard");
+}
+
+function save_json_to_cookie() {
+    var json = JSON.stringify(GLOBALS());
+    document.cookie = "json=" + json;
 }
 
 //Gets a cookie property (from w3schools)
