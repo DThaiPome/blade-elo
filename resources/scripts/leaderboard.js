@@ -37,7 +37,7 @@ document.cookie = "samesite=Lax; domain=dthaipome.github.io";
 
 //load cookie data if present
 {
-    var json = getCookie("json");
+    var json = get_cookie("json");
     console.log(json);
     if (json != "") {
         import_json(json);
@@ -102,22 +102,6 @@ function save_json_to_cookie() {
     var json = JSON.stringify(GLOBALS());
     document.cookie = "json=" + json;
 }
-
-//Gets a cookie property (from w3schools)
-function getCookie(cname) {
-    var name = cname + "=";
-    var ca = document.cookie.split(';');
-    for(var i = 0; i < ca.length; i++) {
-      var c = ca[i];
-      while (c.charAt(0) == ' ') {
-        c = c.substring(1);
-      }
-      if (c.indexOf(name) == 0) {
-        return c.substring(name.length, c.length);
-      }
-    }
-    return "";
-  }
 
 //Parses the JSON in the import field as a leaderboard array, and
 //redraws the leaderboard with this data
