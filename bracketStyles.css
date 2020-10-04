@@ -1,6 +1,9 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700);
 @import url(https://fonts.googleapis.com/css?family=Dosis);
 
+/*Code based on "FCS Tournament Bracket", posted by user Meredith on codepen.io*/
+/*Link: https://codepen.io/meredithz/pen/VYadPy*/
+
 html, body{
   width: 100%;
   height: 100%;
