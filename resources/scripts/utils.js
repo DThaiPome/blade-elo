@@ -57,7 +57,8 @@ function merge(top, bot) {
 //given an array of players, finds the player with the given name, if it reaches the end, then returns an empty string
 function findPlayer(players,name){
     for(var ii=0;ii<players.length;ii++){
-        if(players[ii].get_name() == name){
+        var player = players[ii];
+        if(player.name == name){
             return players[ii];
         }
     }

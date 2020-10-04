@@ -168,16 +168,16 @@ function add_rows_from_leaderboard(tableID) {
     })
 }
 function Win_adjust_elo(winner,loser){
-    winElo = winner.getElo();
-    loseElo = loser.getElo();
+    winElo = winner.elo;
+    loseElo = loser.elo;
     var kwin = scaleK(winElo);
     var klose = scaleK(loseElo);
 
     var expected = 1 / (1 + Math.pow(10, ((loseElo - winElo)/400)));
     var win_adjustedElo = Math.min(Math.max(winElo + Math.ceil(kwin * (1 - expected)), MIN_ELO),MAX_ELO);
-    var loser_adjustedElo = Math.min(Math.max(loseElo +_Math.ceil(klose* (0 - (1-expected),MIN_ELO))),MAX_ELO);
-    winner.setElo(win_adjustedElo);
-    loser.setElo(loser_adjustedElo);
+    var loser_adjustedElo = Math.min(Math.max(loseElo +Math.ceil(klose* (0 - (1-expected),MIN_ELO))),MAX_ELO);
+    winner.elo = win_adjustedElo;
+    loser.elo = loser_adjustedElo;
 }
 
 function scaleK(elo) {
@@ -188,8 +188,9 @@ function add_matchup_results() {
     var winnerName = document.matchup_form.matchup_winner.value;
     var loserName = document.matchup_form.matchup_loser.value;
 
-    var winner = findPlayer(leaderboard, winnerName);
-    var loser = findPlayer(leaderboard, loserName);
+    winner = findPlayer(leaderboard, winnerName);
+    loser = findPlayer(leaderboard, loserName);
+
     if (winner != undefined && loser != undefined) {
         Win_adjust_elo(winner, loser);
         sort_players(leaderboard);
