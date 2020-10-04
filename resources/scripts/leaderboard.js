@@ -29,6 +29,12 @@ function GLOBALS(){
 //table is a list of players
 var leaderboard = [];
 
+//test cookie
+//console.log(document.cookie);
+
+//set cookie to stay in domain
+document.cookie = "samesite=Lax; domain=dthaipome.github.io";
+
 //There is probably a better place to store this
 //string but alas
 function get_table_id() {
@@ -77,6 +83,8 @@ function clear_add_player_fields() {
 function copy_json() {
     var json = JSON.stringify(GLOBALS());
     navigator.clipboard.writeText(json);
+    document.cookie = "json=" + json;
+    console.log(document.cookie);
     alert("Copied JSON to clipboard");
 }
 
