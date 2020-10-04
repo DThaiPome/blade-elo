@@ -23,20 +23,17 @@ class player {
       this.elo = 1000;
     }
 
-    get_elo(){
-        return this.elo;
-    }
-
     //calculates win percentage based on the total number of matches (wins and loses)
-    get_win_percent(){
+    get win_percent(){
         return (this.wins / (this.wins + this.loses))*100;
     }
 
     //calculates the outspin percentage based on the total number of outspins and outspuns
-    get_outspin_percent(){
+    get outspin_percent(){
         return (this.outspins / (this.outspins + this.outspuns)) * 100;
     }
 
+    /*
     //assumes this player is the winner and updates the elo of both this player and their opponent
     Win_adjust_elo(opp){
         var k = scaleK(this.elo);
@@ -47,9 +44,5 @@ class player {
         this.setElo(this_adjustedElo);
         opp.setElo(opp_adjustedElo);
     }
-
-    //sets the elo if this player to the given number
-    setElo(elo){
-        this.elo = elo;
-    }
+    */
 }

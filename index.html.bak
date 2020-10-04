@@ -22,11 +22,10 @@ onclick="clear_players()" type="button"> <br>
 onclick="import_json_onclick()" type="button"></form>
     </div>
     <div>
-      <form name="matchup_form">
-        Winner ID: <input name="matchup_winner" type="text"> <br>
+      <form name="matchup_form"> Winner ID: <input name="matchup_winner" type="text">
+        <br>
         Loser ID:<input name="matchup_loser" type="text"> <br>
         <input value="Add Matchup Results" onclick="add_matchup_results" type="button">
-        
       </form>
     </div>
     <table id="rankings">
@@ -39,8 +38,7 @@ onclick="import_json_onclick()" type="button"></form>
       </tbody>
     </table>
     <script src="resources/scripts/player.js"></script>
-    <script src="resources/scripts/leaderboard.js"></script>
     <script src="resources/scripts/utils.js"></script>
-    
+    <script src="resources/scripts/leaderboard.js"></script>
   </body>
 </html>
