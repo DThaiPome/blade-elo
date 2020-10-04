@@ -14,3 +14,42 @@ function get_cookie(cname) {
     }
     return "";
   }
+
+// Sorts the given array of players based on their elo using merge sort
+function sort_players(players) {
+  if (players.length == 1) {
+      return players;
+  }
+  var median = players.length / 2;
+  var top = sort_players(players.slice(0, median));
+  var bot = sort_players(players.slice(median));
+  return merge(top, bot);
+}
+
+// Merges the two arrays based on the players elo (lowest elo at the front)
+function merge(top, bot) {
+  var ii = 0;
+  var jj = 0;
+  var result = [];
+
+  while (ii < top.length && jj < bot.length) {
+      if (top[ii].elo <= bot[jj].elo) {
+          result.push(top[ii]);
+          ii = ii + 1;
+      } else {
+          result.push(bot[jj]);
+          jj = jj + 1;
+      }
+  }
+
+  while (ii < top.length) {
+      result.push(top[ii]);
+      ii = ii + 1;
+  }
+
+  while (jj < bot.length) {
+      result.push(bot[jj]);
+      jj = jj + 1;
+  }
+  return result;
+}
