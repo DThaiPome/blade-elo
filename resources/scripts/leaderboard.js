@@ -183,4 +183,20 @@ function Win_adjust_elo(winner,loser){
 function scaleK(elo) {
     return Math.floor((1/100000)*(elo*elo)-.66*elo + 100);
   }
+
+function add_matchup_results() {
+    var winnerName = document.matchup_form.matchup_winner.value;
+    var loserName = document.matchup_form.matchup_loser.value;
+
+    var winner = findPlayer(leaderboard, winnerName);
+    var loser = findPlayer(leaderboard, loserName);
+    if (winner != "" && loser != "") {
+        Win_adjust_elo(winner, loser);
+        sort_players(leaderboard);
+        render_table();
+    }
+
+    document.matchup_form.matchup_winner.value = "";
+    document.matchup_form.matchup_loser.value = "";
+}
   
