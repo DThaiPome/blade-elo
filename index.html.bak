@@ -32,5 +32,6 @@ onclick="import_json_onclick()" type="button"></form>
     </div>
     <script src="resources/scripts/player.js"></script>
     <script src="resources/scripts/leaderboard.js"></script>
+    <script src="resources/scripts/utils.js"></script>
   </body>
 </html>
