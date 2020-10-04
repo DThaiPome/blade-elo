@@ -80,6 +80,7 @@ function add_player() {
 //Clears the leaderboard array and redraws the leaderboard
 function clear_players() {
     leaderboard = [];
+    save_json_to_cookie();
     render_table();
 }
 
