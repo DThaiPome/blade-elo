@@ -190,7 +190,7 @@ function add_matchup_results() {
 
     var winner = findPlayer(leaderboard, winnerName);
     var loser = findPlayer(leaderboard, loserName);
-    if (winner != "" && loser != "") {
+    if (winner != undefined && loser != undefined) {
         Win_adjust_elo(winner, loser);
         sort_players(leaderboard);
         render_table();

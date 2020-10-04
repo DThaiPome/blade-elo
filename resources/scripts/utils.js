@@ -61,5 +61,4 @@ function findPlayer(players,name){
             return players[ii];
         }
     }
-     return "";
 }
