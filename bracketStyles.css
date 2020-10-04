@@ -8,7 +8,7 @@ html, body{
   width: 100%;
   height: 100%;
   margin: 0;
-  background-color: #E8E8E8;
+  background-color: #E0F5F7;
 }
 
 .header{
@@ -91,7 +91,7 @@ html, body{
 
 .winner>.bracket-name, .winner>.bracket-score{
   font-weight: bold;
-  color: #D07030;
+  color:  #205060;
 }
 
 .bracket-team:hover{
