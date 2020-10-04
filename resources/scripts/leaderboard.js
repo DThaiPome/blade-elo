@@ -38,6 +38,7 @@ document.cookie = "samesite=Lax; domain=dthaipome.github.io";
 //load cookie data if present
 {
     var json = getCookie("json");
+    console.count(json);
     if (json != "") {
         import_json(json);
     }
