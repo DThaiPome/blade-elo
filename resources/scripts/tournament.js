@@ -2,6 +2,9 @@
 // [0] plays [1], [2] plays [3], [4] plays [5] etc...
 var bracket = [];
 
+// Represents the leaderboard
+var leaderboard = [];
+
 // Represents the index in bracket of the first player in a match
 var p1 = 0;
 
@@ -11,53 +14,59 @@ var p2 = 1;
 // Gets the list of inputted ripper ids (as an array) and creates a sorted
 // array of the players based on their elo (lowest elo at the front).
 function get_players() {
-    var rippers = document.players.value;
-    var players = [];
-    rippers.forEach(outer_item => {
-        leaderboard.forEach(inner_item => {
-            if (outer_item == inner_item.ripper_id) {
-                players.push(inner_item);
-            }
-        })
-    })
+    var leaderboard_string = get_cookie("json");
+    if (leaderboard_string == "") {
+        alert("Please add a leaderboard");
+    }
+    try {
+        var leaderboard_json = JSON.parse(leaderboard_string);
+        leaderboard = leaderboard_json.lb;
+    } catch (e) {
+        alert("Improper JSON provided");
+    }
+    create_bracket();
     return sort_players(players);
 }
 
-// Sorts the given array of players based on their elo using merge sort
-function sort_players(players) {
-    if (players.length == 1) {
-        return players;
+// Creates a bracket based on the top 32 players on the leaderboard.
+// Seeds players 1-8, and then randomizes the matchups
+function create_bracket() {
+    if (leaderboard.length >= 8) {
+        var top_eight = get_top_eight_paired(leaderboard.slice(0,8));
+        if (leaderboard.length > 8) {
+            var everyone_else = randomize_array(leaderboard.slice(8));
+        } else {
+            bracket = top_eight;
+        }
+    } else {
+        bracket = randomize_array(leaderboard);
     }
-    var median = players.length / 2;
-    var top = sort_players(players.slice(0, median));
-    var bot = sort_players(players.slice(median));
-    return merge(top, bot);
 }
 
-// Merges the two arrays based on the players elo (lowest elo at the front)
-function merge(top, bot) {
-    var ii = 0;
-    var jj = 0;
+// Randomizes the order of the elements in the given array
+// Does not modify the original array
+function randomize_array(array) {
     var result = [];
-
-    while (ii < top.length && jj < bot.length) {
-        if (top[ii].elo <= bot[jj].elo) {
-            result.push(top[ii]);
-            ii = ii + 1;
-        } else {
-            result.push(bot[jj]);
-            jj = jj + 1;
-        }
+    var copy = [...array];
+    for (var i = copy.length; i > 0; i--) {
+        var random = Math.floor(Math.random() * i);
+        result.push(copy[random]);
+        copy.splice(random, 1);
     }
+    return result;
+}
 
-    while (ii < top.length) {
-        result.push(top[ii]);
-        ii = ii + 1;
-    }
-
-    while (jj < bot.length) {
-        result.push(bot[jj]);
-        jj = jj + 1;
-    }
+// Pairs the top 8 players, where the pairs are in order:
+// (1, 8); (4, 5); (2, 7); (3, 6)
+function get_top_eight_paired(top_eight) {
+    var result = [];
+    result.push(leaderboard[1]);
+    result.push(leaderboard[8]);
+    result.push(leaderboard[4]);
+    result.push(leaderboard[5]);
+    result.push(leaderboard[2]);
+    result.push(leaderboard[7]);
+    result.push(leaderboard[3]);
+    result.push(leaderboard[6]);
     return result;
 }

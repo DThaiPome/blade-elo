@@ -35,21 +35,21 @@ function merge(top, bot) {
   while (ii < top.length && jj < bot.length) {
       if (top[ii].elo <= bot[jj].elo) {
           result.push(top[ii]);
-          ii = ii + 1;
+          ii++;
       } else {
           result.push(bot[jj]);
-          jj = jj + 1;
+          jj++;
       }
   }
 
   while (ii < top.length) {
       result.push(top[ii]);
-      ii = ii + 1;
+      ii++;
   }
 
   while (jj < bot.length) {
       result.push(bot[jj]);
-      jj = jj + 1;
+      jj++;
   }
   return result;
 }
