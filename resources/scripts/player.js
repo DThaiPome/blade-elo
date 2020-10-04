@@ -22,6 +22,8 @@ class player {
       this.ripper_id = ripper_id;
       this.elo = 1000;
     }
+    get_name(){
+        return this.name;
 
     get_elo(){
         return this.elo;
