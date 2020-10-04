@@ -8,15 +8,6 @@
   <body>
     <h1 class="Title">Automatic ELO Ranking</h1>
     <h2 class="Title"> Beyblade ELO Rankings: </h2>
-    <table id="rankings">
-      <tbody>
-        <tr id="labels">
-          <th class="RipperID">Ripper ID</th>
-          <th class="Identity">Identity</th>
-          <th class="ELO">ELO</th>
-        </tr>
-      </tbody>
-    </table>
     <div>
       <form name="new_player_info"> Enter player information: <br>
         Name: <input name="player_name" type="text"> <br>
@@ -30,8 +21,26 @@ onclick="clear_players()" type="button"> <br>
 
 onclick="import_json_onclick()" type="button"></form>
     </div>
+    <div>
+      <form name="matchup_form">
+        Winner ID: <input name="matchup_winner" type="text"> <br>
+        Loser ID:<input name="matchup_loser" type="text"> <br>
+        <input value="Add Matchup Results" onclick="add_matchup_results" type="button">
+        
+      </form>
+    </div>
+    <table id="rankings">
+      <tbody>
+        <tr id="labels">
+          <th class="RipperID">Ripper ID</th>
+          <th class="Identity">Identity</th>
+          <th class="ELO">ELO</th>
+        </tr>
+      </tbody>
+    </table>
     <script src="resources/scripts/player.js"></script>
     <script src="resources/scripts/leaderboard.js"></script>
     <script src="resources/scripts/utils.js"></script>
+    
   </body>
 </html>
