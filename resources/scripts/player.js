@@ -24,6 +24,7 @@ class player {
     }
     get_name(){
         return this.name;
+    }
 
     get_elo(){
         return this.elo;
