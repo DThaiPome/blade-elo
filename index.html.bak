@@ -3,7 +3,6 @@
   <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <title>BladeELO</title>
-    <script src="resources/scripts/leaderboard.js"></script>
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
@@ -27,9 +26,11 @@
 onclick="clear_players()" type="button"> <br>
         <input value="Copy JSON to clipboard" onclick="copy_json()" type="button">
         <br>
-        Import JSON: <input name="json_input" type="text"> <input
+        Import JSON: <input name="json_input" type="text"> <input value="Import"
 
-value="Import" onclick="import_json()" type="button"></form>
+onclick="import_json()" type="button"></form>
     </div>
+    <script src="resources/scripts/player.js"></script>
+    <script src="resources/scripts/leaderboard.js"></script>
   </body>
 </html>
