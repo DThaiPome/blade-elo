@@ -22,12 +22,6 @@ html, body{
   color: #205060;
 }
 
-.header>h2{
-  margin: auto;
-  text-align: center;
-  font-family: 'Dosis', sans-serif;
-  color: #205060;
-}
 
 .bracket-container{
   display: flex;
