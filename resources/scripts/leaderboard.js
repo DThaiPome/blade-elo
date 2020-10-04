@@ -175,13 +175,13 @@ function Win_adjust_elo(winner,loser){
 
     var expected = 1 / (1 + Math.pow(10, ((loseElo - winElo)/400)));
     var win_adjustedElo = Math.min(Math.max(winElo + Math.ceil(kwin * (1 - expected)), MIN_ELO),MAX_ELO);
-    var loser_adjustedElo = Math.min(Math.max(loseElo +Math.ceil(klose* (0 - (1-expected),MIN_ELO))),MAX_ELO);
+    var loser_adjustedElo = Math.min(Math.max(loseElo + Math.ceil(klose * (0 - (1-expected))), MIN_ELO), MAX_ELO);
     winner.elo = win_adjustedElo;
     loser.elo = loser_adjustedElo;
 }
 
 function scaleK(elo) {
-    return Math.floor((1/100000)*(elo*elo)-.66*elo + 100);
+    return Math.floor(((elo * elo)/100000) - (0.066*elo) + 110);
   }
 
 function add_matchup_results() {
