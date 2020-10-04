@@ -35,6 +35,14 @@ var leaderboard = [];
 //set cookie to stay in domain
 document.cookie = "samesite=Lax; domain=dthaipome.github.io";
 
+//load cookie data if present
+{
+    var json = getCookie("json");
+    if (json != "") {
+        import_json(json);
+    }
+}
+
 //There is probably a better place to store this
 //string but alas
 function get_table_id() {
@@ -87,6 +95,22 @@ function copy_json() {
     console.log(document.cookie);
     alert("Copied JSON to clipboard");
 }
+
+//Gets a cookie property (from w3schools)
+function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i = 0; i < ca.length; i++) {
+      var c = ca[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+  }
 
 //Parses the JSON in the import field as a leaderboard array, and
 //redraws the leaderboard with this data
