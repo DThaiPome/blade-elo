@@ -191,9 +191,11 @@ function add_matchup_results() {
     winner = findPlayer(leaderboard, winnerName);
     loser = findPlayer(leaderboard, loserName);
 
-    if (winner != undefined && loser != undefined) {
+    if (winner != undefined && loser != undefined && winner != loser) {
         Win_adjust_elo(winner, loser);
-        sort_players(leaderboard);
+        leaderboard = sort_players(leaderboard);
+        leaderboard.reverse();
+        save_json_to_cookie();
         render_table();
     }
 
