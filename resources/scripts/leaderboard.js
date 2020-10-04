@@ -33,7 +33,7 @@ var leaderboard = [];
 //console.log(document.cookie);
 
 //set cookie to stay in domain
-document.cookie = "samesite=lax; domain=dthaipome.github.io";
+document.cookie = "samesite=Lax; domain=dthaipome.github.io";
 
 //There is probably a better place to store this
 //string but alas
