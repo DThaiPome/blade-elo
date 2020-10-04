@@ -3,6 +3,16 @@ var MAX_ELO = 2000;
 var ELO_FACTOR = 100; //how many points to next elo
 
 function GLOBALS(){
+    var globals = new class {
+        constructor() {
+            this.min = MIN_ELO; 
+            this.max = MAX_ELO;
+            this.factor = ELO_FACTOR;
+            this.lb = leaderboard;
+        }
+    }
+    return globals;
+    /*
     function constructor(){
         this.min = MIN_ELO; 
         this.max = MAX_ELO;
@@ -10,6 +20,7 @@ function GLOBALS(){
         this.lb = leaderboard;
     }
     return constructor;
+    */
 }
 //This is where each "row" of the table is stored
 //All methods work on this array, then the contents
