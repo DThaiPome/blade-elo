@@ -37,12 +37,15 @@ function add_player() {
     var rankings_table = document.getElementById(get_table_id());
 
     var name = document.new_player_info.player_name.value;
-    document.new_player_info.player_name.value = "";
     var id = document.new_player_info.player_ripper_id.value;
-    document.new_player_info.player_ripper_id.value = "";
 
-    var newPlayer = new Player(name, id);
-    leaderboard.push(newPlayer);
+    var newPlayer = new player(name, id);
+    
+    if (newPlayer.name != "" && newPlayer.ripper_id != "") {
+        leaderboard.push(newPlayer);
+    }
+
+    clear_add_player_fields();
 
     render_table();
 }
@@ -51,6 +54,11 @@ function add_player() {
 function clear_players() {
     leaderboard = [];
     render_table();
+}
+
+function clear_add_player_fields() {
+    document.new_player_info.player_name.value = "";
+    document.new_player_info.player_ripper_id.value = "";
 }
 
 //Converts the contents of the leaderboard array to JSON, then

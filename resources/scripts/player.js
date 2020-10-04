@@ -1,4 +1,5 @@
 class player {
+    /*
     constructor(name, ripper_id, elo, wins,loses, burst, bursted,outspins,outspuns,knockouts,dq,tourneyparticipations, tourneywins) {
         this.name = name;
         this.ripper_id = ripper_id
@@ -14,8 +15,12 @@ class player {
         this.tourneyparticipations = tourneyparticipations;
         this.tourneywins = tourneywins;
     }
+    */
     constructor(name,ripper_id){ //creates a new beybaby
-      this(name,ripper_id,1000,0,0,0,0,0,0,0,0,0,0,0);
+      //this(name,ripper_id,1000,0,0,0,0,0,0,0,0,0,0,0);
+      this.name = name;
+      this.ripper_id = ripper_id;
+      this.elo = 1000;
     }
 
     get_elo(){
