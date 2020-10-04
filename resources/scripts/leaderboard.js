@@ -93,7 +93,6 @@ function copy_json() {
     var json = JSON.stringify(GLOBALS());
     navigator.clipboard.writeText(json);
     document.cookie = "json=" + json;
-    console.log(document.cookie);
     alert("Copied JSON to clipboard");
 }
 
@@ -122,8 +121,7 @@ TODO:
     * Clear the input field afterwards
 */
 //imports the json with the given data, provided we are given a proper json
-function import_json() {
-    var json = document.new_player_info.json_input.value;
+function import_json(json) {
     try {
             var global = JSON.parse(json);
             MIN_ELO = global.min;
@@ -135,6 +133,11 @@ function import_json() {
         alert( "Improper JSON provided.");
     }
     document.new_player_info.json_input.value = "";
+}
+
+//Imports JSON from the text field
+function import_json_onclick() {
+    import_json(document.new_player_info.json_input.value);
 }
 
 //Redraws the leaderboard using what is stored in the leaderboard array
